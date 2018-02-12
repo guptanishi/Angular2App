@@ -1,0 +1,18 @@
+<h3>{{title}}</h3>
+<table id="addForm">
+    <form [formGroup] = "form" (ngSubmit)="save(form)" > 
+        <div>
+        <tr><td>Name:</td><td><input type="text"  formControlName="name" /></td><td><label *ngIf="form.get('name').invalid " [ngClass] = "'error'"> Name is required with 5 max character. </label></td></tr>
+        <tr><td>Phone:</td><td><input type="text" formControlName="phone"  /></td><td><label *ngIf="form.get('phone').invalid " [ngClass] = "'error'"> only numbers allowed. </label></td></tr>
+        </div>
+        <div formGroupName="address">
+        <tr><td>City:</td><td> <input type="text" formControlName="city" /></td></tr>
+        <tr><td>Address1:</td><td><input type="text" formControlName="address_line1" /></td></tr>
+        <tr><td>Address2:</td><td><input type="text" formControlName="address_line2"/></td></tr>
+        <tr><td>Postal Code:</td><td><input type="text" formControlName="postal_code"/></td></tr>
+        </div>
+        <tr><td> <button *ngIf="!articleIdToUpdate">CREATE</button>  
+                 <button *ngIf="articleIdToUpdate">UPDATE</button>
+        </td></tr>
+    </form>
+</table>

@@ -1,0 +1,30 @@
+<h2>employees List</h2>
+
+<input type="text" (keyup)="0" #input1 class="form-control" placeholder="Search for..."/><br/>
+	<br/>
+	<br/>
+
+    <table border="1">
+      <tr>
+        <th>Id</th>
+		<th>Name</th>
+        <th>Phone</th>
+		<th>City</th>
+		<th>Address1</th>
+		<th>Address2</th>
+		<th>Postal Code</th>
+      </tr>
+      <tr *ngFor="let employee of (employees |filter: input1.value)">
+        <td>{{employee.id}}</td>
+		<td>{{employee.name}}</td>
+		<td>{{employee.phone | filterPhone}}</td>
+		<td>{{employee.address.city}}</td>
+		<td>{{employee.address.address_line1}}</td>
+		<td>{{employee.address.address_line2}}</td>
+		<td>{{employee.address.postal_code}}</td>
+		<td><a [routerLink]="['/Employee/edit', employee.id]">Edit</a> </td>
+      </tr>
+	</table>
+	<br/>
+	<br/>
+	<input type="button" class="Add" value="Add/New" routerLink="/add"/>
